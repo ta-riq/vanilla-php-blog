@@ -1,9 +1,6 @@
 <?php 
 
 $uri = parse_url($_SERVER["REQUEST_URI"])["path"];
-// parse_url($uri, PHP_URL_PATH);
-
-// dd(parse_url($uri));
 
 $routes = [
     '/' => 'controllers/index.php',
@@ -12,7 +9,7 @@ $routes = [
 ];
 
 if (array_key_exists($uri, $routes)) {
-    $heading = $_SERVER["REQUEST_URI"];
+    $heading = $_SERVER["REQUEST_URI"] . " Page";
     require $routes[$uri];
 } else {
     require "views/404.view.php";
