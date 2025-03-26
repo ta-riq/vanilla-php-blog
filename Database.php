@@ -4,9 +4,10 @@ class Database {
     
     public $connection;
 
-    public function __construct() {
-        $dsn = "mysql:host=localhost;port=3306;dbname=myapp;charset=utf8mb4";
-        $this->connection = new PDO($dsn, "root", "", [
+    public function __construct($config) {
+        // using http_build_query to convert array to string -> DB Configaration array
+        $dsn = "mysql:" . http_build_query($config, '', ';');
+        $this->connection = new PDO($dsn, "root", "0090", [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);
     }
